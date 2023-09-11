@@ -1,5 +1,5 @@
 <template>
-  <div class="condtional-rendering-exercise container">
+  <div class="conditional-rendering-exercise container">
     <div class="row">
       <div class="col-12">
         <div class="border p-1">
@@ -10,7 +10,7 @@
             screen.
           </p>
           <!-- add code to element below -->
-          <div class="player-card text-center">
+          <div class="player-card text-center" v-if="true == true">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -67,23 +67,23 @@
             to add another condition.
           </p>
           <!-- v-if comparing grade and 90 -->
-          <div>
+          <div v-if="state.player.grade >= 90">
             <p>The grade is 'A'.</p>
           </div>
           <!-- v-else-if comparing grade and 80 -->
-          <div>
+          <div v-else-if="state.player.grade >= 80">
             <p>The grade is 'B'.</p>
           </div>
           <!-- v-else-if comparing grade and 70 -->
-          <div>
+          <div v-else-if="state.player.grade >= 70">
             <p>The grade is 'C'.</p>
           </div>
           <!-- v-else-if comparing grade and 60 -->
-          <div>
+          <div v-else-if="state.player.grade >= 60" >
             <p>The grade is 'D'.</p>
           </div>
           <!-- v-else to display if all the others fail -->
-          <div>
+          <div v-else-if="state.player.grade <= 50">
             <p>The grade is 'F'.</p>
           </div>
         </div>
@@ -93,7 +93,7 @@
             Change the v-if directive to a v-show on the "player-card" element
             below.
           </p>
-          <div class="player-card text-center area" v-show="state.player.id">
+          <div class="player-card text-center area" v-show="state.player.name">
             <div>
               <img :src="state.player.photo" />
             </div>
@@ -125,23 +125,28 @@
 import { reactive } from "vue";
 
 export default {
-  name: "condtional-rendering-exercise",
+  name: "conditional-rendering-exercise",
   setup() {
     // NOTE typically state will be abstracted to a global AppState
     const state = reactive({
       //add a property to toggle the player-card here.
       //add a property to set the number value here.
       player: {
+        showPlayer: true,
         photo: "https://robohash.org/Mick",
         name: "Mick",
         position: "WR",
         number: 4,
+        grade:89
+
+        ,
       },
     });
     return {
       state,
     };
   },
+
 };
 </script>
 
